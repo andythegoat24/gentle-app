@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FAF7F2">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>今天的心意</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<!-- to become PWA -->
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+<body>
+
+  <main class="container">
+
+    <!-- 💌 Message -->
+    <section class="card message-card">
+      <p id="messageText"></p>
+    </section>
+
+    <!-- 🌱 Reminder -->
+    <section class="card reminder-card">
+      <p id="reminderText"></p>
+    </section>
+
+    <!-- ❓ Question -->
+    <section class="card question-card">
+      <p id="questionText"></p>
+
+      <input
+        id="answerInput"
+        type="text"
+        placeholder="偷偷回答就好"
+      />
+
+      <button id="submitBtn">送出</button>
+
+      <p id="feedbackText"></p>
+
+      <img id="photo" />
+    </section>
+
+    <footer class="footer">
+      今天的小心意
+    </footer>
+
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
