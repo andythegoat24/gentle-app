@@ -3,16 +3,40 @@
   font-family: "Noto Sans TC", sans-serif;
 }
 
+/* Decorative Wallpaper Styling */
+.corner-decor {
+  position: absolute;
+  width: 100px; /* Adjust size as needed */
+  height: auto;
+  opacity: 0.8; /* Makes it blend softly with the background */
+  z-index: -1;   /* Keeps it behind the cards */
+  pointer-events: none; /* Allows you to click "through" the image */
+}
+
+.top-left {
+  top: 10px;
+  left: 10px;
+  transform: scaleX(-1); /* Mirrors the cat so it faces inward */
+}
+
+.top-right {
+  top: 10px;
+  right: 10px;
+}
+
 body {
   margin: 0;
   background: #faf7f2;
   color: #333;
 }
 
+/* Ensure the container stays on top and centered */
 .container {
+  position: relative;
   max-width: 420px;
   margin: 0 auto;
   padding: 20px;
+  z-index: 1; 
 }
 
 .card {
@@ -79,4 +103,12 @@ button:active {
   font-size: 0.8rem;
   color: #999;
   margin-top: 12px;
+}
+.label {
+  font-weight: 500;
+  color: #8e8271; /* A soft brown/grey that fits your #FAF7F2 theme */
+  margin-right: 4px;
+  display: block; /* Makes the label sit above the text */
+  margin-bottom: 8px;
+  font-size: 0.9rem;
 }

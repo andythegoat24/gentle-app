@@ -2,7 +2,12 @@ import { messages } from "./data/messages.js";
 import { reminders } from "./data/reminders.js";
 import { questions } from "./data/questions.js";
 
-// DOM
+// --- Global Data (Created once on load) ---
+const PHOTO_COUNT = 69; // Easily change this number here
+const photos = Array.from({ length: PHOTO_COUNT }, (_, i) => `photos/us${i + 1}.jpg`);
+
+// --- DOM Elements ---
+// Note: These IDs should be on the <span> tags in your HTML
 const messageText = document.getElementById("messageText");
 const reminderText = document.getElementById("reminderText");
 const questionText = document.getElementById("questionText");
@@ -11,29 +16,25 @@ const submitBtn = document.getElementById("submitBtn");
 const feedbackText = document.getElementById("feedbackText");
 const photo = document.getElementById("photo");
 
-// Utils
+// --- Utils ---
 function randomIndex(length) {
   return Math.floor(Math.random() * length);
 }
 
 function normalize(text) {
-  return text
-    .toLowerCase()
-    .replace(/\s+/g, "")
-    .trim();
+  return text.toLowerCase().replace(/\s+/g, "").trim();
 }
 
-// Date logic
+// --- Date Logic ---
 const today = new Date();
 const todayKey = today.toISOString().split("T")[0];
 const month = today.getMonth() + 1;
 const day = today.getDate();
 const isBirthday = month === 4 && day === 21;
 
-// Daily data
+// --- Daily Data Selection ---
 let dailyData;
 
-// 🎂 Birthday override
 if (isBirthday) {
   dailyData = {
     message: "生日快樂 🤍 今天只要開心就好，其他都交給我。",
@@ -44,7 +45,6 @@ if (isBirthday) {
     }
   };
 } else {
-  // 🔒 Normal daily lock
   dailyData = JSON.parse(localStorage.getItem("dailyCombo"));
 
   if (!dailyData || dailyData.date !== todayKey) {
@@ -58,7 +58,7 @@ if (isBirthday) {
   }
 }
 
-// Render content
+// --- Initial Render ---
 if (isBirthday) {
   messageText.textContent = dailyData.message;
   reminderText.textContent = dailyData.reminder;
@@ -69,10 +69,9 @@ if (isBirthday) {
   questionText.textContent = questions[dailyData.questionIndex].question;
 }
 
-// Handle answer
+// --- Event Listeners ---
 submitBtn.addEventListener("click", () => {
   const userAnswer = answerInput.value;
-
   const correctAnswer = isBirthday
     ? dailyData.question.answer
     : questions[dailyData.questionIndex].answer;
@@ -83,23 +82,18 @@ submitBtn.addEventListener("click", () => {
   } else {
     feedbackText.textContent = isBirthday
       ? "不對喔 😌 再想一下，今天很重要。"
-      : "錯了 😌 快去打給 Andy，他會提示你。";
+      : "錯了 😌 快去打給寶，他會提示你。";
   }
 });
 
-// Photos
+// --- Photos Function ---
 function showRandomPhoto() {
   if (isBirthday) {
     photo.src = "photos/birthday.jpg";
   } else {
-    // Corrected: Removed the outer brackets []
-    const photos = Array.from({ length: 67 }, (_, i) => `photos/us${i + 1}.jpg`);
-    
-    // Now photos.length is 65, and it picks one string
+    // Uses the 'photos' array from the top of the file
     const selected = photos[randomIndex(photos.length)];
     photo.src = selected;
   }
-
   photo.style.display = "block";
 }
-

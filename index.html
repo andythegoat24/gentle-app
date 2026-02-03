@@ -20,17 +20,19 @@
 </script>
 
 <body>
+  <img src="wallpaper.jpg" class="corner-decor top-left" alt="decor">
+  <img src="wallpaper.jpg" class="corner-decor top-right" alt="decor">
 
   <main class="container">
 
     <!-- 💌 Message -->
     <section class="card message-card">
-      <p id="messageText"></p>
+      <p><span class="label">今日寶名言：</span><span id="messageText"></span></p>
     </section>
 
     <!-- 🌱 Reminder -->
     <section class="card reminder-card">
-      <p id="reminderText"></p>
+      <p><span class="label">今日小提醒：</span><span id="reminderText"></span></p>
     </section>
 
     <!-- ❓ Question -->
@@ -40,7 +42,7 @@
       <input
         id="answerInput"
         type="text"
-        placeholder="偷偷回答就好"
+        placeholder="想清楚回答喔寶ㄎㄎ"
       />
 
       <button id="submitBtn">送出</button>
