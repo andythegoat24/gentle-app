@@ -3,34 +3,42 @@
   font-family: "Noto Sans TC", sans-serif;
 }
 
-/* Decorative Wallpaper Styling */
+/* 🐈 Decorative Wallpaper Styling */
 .corner-decor {
-  position: absolute;
-  width: 100px; /* Adjust size as needed */
+  position: fixed;      /* Changed to fixed for better mobile display */
+  width: 80px;          /* Optimized size for mobile */
   height: auto;
-  opacity: 0.8; /* Makes it blend softly with the background */
-  z-index: -1;   /* Keeps it behind the cards */
-  pointer-events: none; /* Allows you to click "through" the image */
+  opacity: 0.6;         /* Softened so it doesn't distract */
+  z-index: -1;          /* Keeps it behind the cards */
+  pointer-events: none; /* Allows clicking "through" to buttons below */
+}
+
+/* Larger size for Laptops */
+@media (min-width: 600px) {
+  .corner-decor {
+    width: 150px;
+    opacity: 0.7;
+  }
 }
 
 .top-left {
-  top: 10px;
-  left: 10px;
-  transform: scaleX(-1); /* Mirrors the cat so it faces inward */
+  top: 0;
+  left: 0;
+  transform: scaleX(-1); /* Mirrors the image */
 }
 
 .top-right {
-  top: 10px;
-  right: 10px;
+  top: 0;
+  right: 0;
 }
 
 body {
   margin: 0;
   background: #faf7f2;
   color: #333;
+  overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
 }
 
-/* Ensure the container stays on top and centered */
 .container {
   position: relative;
   max-width: 420px;
@@ -39,56 +47,88 @@ body {
   z-index: 1; 
 }
 
+/* ☁️ Card Styling with Soft Shadows */
 .card {
   background: #ffffff;
   border-radius: 18px;
   padding: 18px;
   margin-bottom: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+  /* Multi-layered shadow for a soft, premium feel */
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.02), 
+    0 10px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Tap feedback for the whole card */
+.card:active {
+  transform: scale(0.99);
 }
 
 .message-card {
   background: #f3e8e5;
   font-size: 1.05rem;
   line-height: 1.6;
+  /* Shadow that matches the card tint */
+  box-shadow: 0 10px 25px rgba(243, 232, 229, 0.8);
 }
 
 .reminder-card {
   background: #e8f0ec;
   font-size: 0.95rem;
+  /* Shadow that matches the card tint */
+  box-shadow: 0 10px 25px rgba(232, 240, 236, 0.8);
 }
 
 .question-card {
   text-align: center;
 }
 
+.label {
+  font-weight: 500;
+  color: #8e8271; 
+  margin-right: 4px;
+  display: block; 
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+/* Form Elements */
 input {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 10px;
   border-radius: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid #eee;
   font-size: 1rem;
+  background: #fafafa;
 }
 
 button {
   margin-top: 10px;
-  padding: 10px;
+  padding: 12px;
   width: 100%;
   border-radius: 12px;
   border: none;
   background: #c89b9b;
   color: white;
   font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(200, 155, 155, 0.3);
+  transition: all 0.2s;
 }
 
 button:active {
-  opacity: 0.85;
+  transform: scale(0.96);
+  opacity: 0.9;
 }
 
 #feedbackText {
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 0.95rem;
+  min-height: 1.2rem;
 }
 
 #photo {
@@ -96,19 +136,13 @@ button:active {
   margin-top: 12px;
   width: 100%;
   border-radius: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .footer {
   text-align: center;
   font-size: 0.8rem;
-  color: #999;
-  margin-top: 12px;
-}
-.label {
-  font-weight: 500;
-  color: #8e8271; /* A soft brown/grey that fits your #FAF7F2 theme */
-  margin-right: 4px;
-  display: block; /* Makes the label sit above the text */
-  margin-bottom: 8px;
-  font-size: 0.9rem;
+  color: #bbb;
+  margin-top: 20px;
+  padding-bottom: 20px;
 }
