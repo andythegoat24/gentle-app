@@ -3,45 +3,41 @@
   font-family: "Noto Sans TC", sans-serif;
 }
 
-/* 🐈 Decorative Wallpaper Styling */
+/* 🐈 Background Wallpaper - Optimized to not be blocked */
 .corner-decor {
-  position: fixed;      /* Changed to fixed for better mobile display */
-  width: 80px;          /* Optimized size for mobile */
+  position: fixed;
+  width: 100px; /* Slightly larger to be seen better */
   height: auto;
-  opacity: 0.6;         /* Softened so it doesn't distract */
-  z-index: -1;          /* Keeps it behind the cards */
-  pointer-events: none; /* Allows clicking "through" to buttons below */
+  opacity: 0.9; /* More visible */
+  z-index: -1;
+  pointer-events: none;
 }
 
-/* Larger size for Laptops */
 @media (min-width: 600px) {
-  .corner-decor {
-    width: 150px;
-    opacity: 0.7;
-  }
+  .corner-decor { width: 180px; }
 }
 
 .top-left {
-  top: 0;
-  left: 0;
-  transform: scaleX(-1); /* Mirrors the image */
+  top: -10px;  /* Pulled up slightly to avoid overlapping top text */
+  left: -10px;
+  transform: scaleX(-1); 
 }
 
 .top-right {
-  top: 0;
-  right: 0;
+  top: -10px;
+  right: -10px;
 }
 
 body {
   margin: 0;
   background: #faf7f2;
   color: #333;
-  overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
+  overflow-x: hidden;
 }
 
 .container {
   position: relative;
-  max-width: 420px;
+  max-width: 380px; /* Narrowed slightly so cats are visible on the sides */
   margin: 0 auto;
   padding: 20px;
   z-index: 1; 
@@ -49,60 +45,45 @@ body {
 
 /* ☁️ Card Styling with Soft Shadows */
 .card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 18px;
-  margin-bottom: 16px;
-  /* Multi-layered shadow for a soft, premium feel */
+  /* Semi-transparent white so the cat's colors bleed through slightly */
+  background: rgba(255, 255, 255, 0.92); 
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  
+  /* Soft Shadow Effect: This makes the cards look like they are floating */
   box-shadow: 
-    0 4px 6px rgba(0, 0, 0, 0.02), 
-    0 10px 20px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+    0 10px 30px rgba(142, 130, 113, 0.15), 
+    0 4px 8px rgba(0, 0, 0, 0.05);
+    
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: transform 0.2s ease;
 }
 
-/* Tap feedback for the whole card */
 .card:active {
-  transform: scale(0.99);
+  transform: translateY(2px);
 }
 
 .message-card {
-  background: #f3e8e5;
+  background: rgba(243, 232, 229, 0.95);
   font-size: 1.05rem;
   line-height: 1.6;
-  /* Shadow that matches the card tint */
-  box-shadow: 0 10px 25px rgba(243, 232, 229, 0.8);
 }
 
 .reminder-card {
-  background: #e8f0ec;
+  background: rgba(232, 240, 236, 0.95);
   font-size: 0.95rem;
-  /* Shadow that matches the card tint */
-  box-shadow: 0 10px 25px rgba(232, 240, 236, 0.8);
 }
 
-.question-card {
-  text-align: center;
-}
+.question-card { text-align: center; }
 
-.label {
-  font-weight: 500;
-  color: #8e8271; 
-  margin-right: 4px;
-  display: block; 
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-}
-
-/* Form Elements */
 input {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
   border-radius: 12px;
-  border: 1px solid #eee;
+  border: 1px solid #e0e0e0;
   font-size: 1rem;
-  background: #fafafa;
 }
 
 button {
@@ -115,20 +96,15 @@ button {
   color: white;
   font-size: 1rem;
   font-weight: 500;
-  cursor: pointer;
   box-shadow: 0 4px 10px rgba(200, 155, 155, 0.3);
-  transition: all 0.2s;
 }
 
-button:active {
-  transform: scale(0.96);
-  opacity: 0.9;
-}
-
-#feedbackText {
-  margin-top: 15px;
-  font-size: 0.95rem;
-  min-height: 1.2rem;
+.label {
+  font-weight: 500;
+  color: #8e8271;
+  margin-bottom: 8px;
+  display: block;
+  font-size: 0.9rem;
 }
 
 #photo {
@@ -136,7 +112,6 @@ button:active {
   margin-top: 12px;
   width: 100%;
   border-radius: 14px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .footer {
@@ -144,5 +119,4 @@ button:active {
   font-size: 0.8rem;
   color: #bbb;
   margin-top: 20px;
-  padding-bottom: 20px;
 }
